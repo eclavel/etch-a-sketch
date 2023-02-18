@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/42a00bf9c0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="javascript.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="title">Etch-a-Sketch</div>
+    </header>
+    <main>
+      <div class="input">
+        <div class="slider">
+          <input
+            type="range"
+            value="16"
+            min="16"
+            max="50"
+            oninput="this.nextElementSibling.value = this.value"
+          />
+          <output>16</output>
+        </div>
+
+        
+        <input type="color" />
+        <input type="reset" />
+      </div>
+      <div class="grid-container"></div>
+    </main>
+    <footer>
+      <a href="https://github.com/eclavel">
+        <i class="fa-brands fa-github">eclavel</i>
+      </a>
+    </footer>
+  </body>
+</html>
