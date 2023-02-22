@@ -97,8 +97,6 @@ main .input .slider{
 main .grid-container {
   display: grid;
   margin: 10px;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
   height: 25rem;
   width: 25rem;
   border: 2px solid darkslateblue;
@@ -106,7 +104,7 @@ main .grid-container {
 }
 main .grid-container div {
   background-color: white;
-  border: 1px solid black;
+  border: .5px solid black;
 }
 
 footer {

@@ -1,13 +1,47 @@
-const container = document.querySelector('.grid-container');
+const div = document.createElement("div");
+const reset = document.querySelector("input.reset");
 
-function addDiv(num) {
-  for (let i = 0; i < num; i++) {
-    for (let j = 0; j < num; j++) {
-      const newDiv = document.createElement("div");
-      container.appendChild(newDiv);
+function createGrid(size) {
+  const grid = document.querySelector(".grid-container");
+  //remove previous grid
+  removeOldGrid();
+  //create new grid size
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      const div = document.createElement("div");
+      div.classList.add("square");
+      grid.appendChild(div);
+      div.addEventListener("mouseover", ()=>{
+        div.style.backgroundColor="black"
+      });
     }
   }
 }
 
-addDiv(16);
+function clearGrid(){
+  const square = document.querySelectorAll(".square");
+  square.forEach(square => {square.style.backgroundColor = "white"});
+
+}
+
+function removeOldGrid(){
+  const divs = document.querySelectorAll(".grid-container div");
+  divs.forEach(div => div.remove());
+}
+
+const slider = document.querySelector(".input .slider input");
+const output = document.querySelector(".input .slider output");
+slider.addEventListener('input',e=>{
+  output.innerHTML = e.target.value + "x" + e.target.value;
+  createGrid(e.target.value);
+})
+
+reset.addEventListener('click',clearGrid);
+
+createGrid(16);
+
+
+
 
