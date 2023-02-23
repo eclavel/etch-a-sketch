@@ -28,6 +28,7 @@ function createGrid(size) {
 }
 
 function clearGrid() {
+  randomRGB = false;
   const square = document.querySelectorAll(".square");
   square.forEach((square) => {
     square.style.backgroundColor = "white";
@@ -56,15 +57,12 @@ slider.addEventListener("input", (e) => {
 });
 
 colorInput.addEventListener("change",e =>{
+  randomRGB = false;
   currentColor = e.target.value;
 })
 
 randomColor.addEventListener("click", () => {
-  if(!randomRGB){
-    randomRGB = true;
-}else{
-  randomRGB = false;
-}})
+  randomRGB = true;})
 
 reset.addEventListener("click", clearGrid);
 
