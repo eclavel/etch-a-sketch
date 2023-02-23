@@ -96,11 +96,24 @@ main .input .slider{
 button{
   border-radius: 10px;
 }
-button:hover{
+
+input.reset{
+  border-radius: 10px;
+}
+
+button:hover,
+input.color:hover,
+input.reset:hover{
   cursor: pointer;
   background-color: white;
   color: black;
   border-color: black;
+  box-shadow: 3px 1px;
+}
+button:active,
+input.color:active,
+input.reset:active{
+  background-color: red;
 }
 
 main .grid-container {
