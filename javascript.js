@@ -1,6 +1,6 @@
-const div = document.createElement("div");
 const reset = document.querySelector("input.reset");
-const color = document.querySelector("input.color");
+const colorInput = document.querySelector("input.color");
+let currentColor = "black";
 
 function createGrid(size) {
   const grid = document.querySelector(".grid-container");
@@ -15,7 +15,7 @@ function createGrid(size) {
       div.classList.add("square");
       grid.appendChild(div);
       div.addEventListener("mouseover", () => {
-        div.style.backgroundColor = "black";
+        div.style.backgroundColor = currentColor;
       });
     }
   }
@@ -39,6 +39,10 @@ slider.addEventListener("input", (e) => {
   output.innerHTML = e.target.value + "x" + e.target.value;
   createGrid(e.target.value);
 });
+
+colorInput.addEventListener("change",e =>{
+  currentColor = e.target.value;
+})
 
 reset.addEventListener("click", clearGrid);
 
