@@ -1,6 +1,8 @@
 const reset = document.querySelector("input.reset");
 const colorInput = document.querySelector("input.color");
+const randomColor = document.querySelector("button.random");
 let currentColor = "black";
+let randomRGB = false;
 
 function createGrid(size) {
   const grid = document.querySelector(".grid-container");
@@ -15,7 +17,11 @@ function createGrid(size) {
       div.classList.add("square");
       grid.appendChild(div);
       div.addEventListener("mouseover", () => {
-        div.style.backgroundColor = currentColor;
+        if(!randomRGB){
+          div.style.backgroundColor = currentColor;
+        }else{
+          div.style.backgroundColor = getRandomColor();
+        }
       });
     }
   }
@@ -33,6 +39,15 @@ function removeOldGrid() {
   divs.forEach((div) => div.remove());
 }
 
+function getRandomColor(){
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 const slider = document.querySelector(".input .slider input");
 const output = document.querySelector(".input .slider output");
 slider.addEventListener("input", (e) => {
@@ -43,6 +58,13 @@ slider.addEventListener("input", (e) => {
 colorInput.addEventListener("change",e =>{
   currentColor = e.target.value;
 })
+
+randomColor.addEventListener("click", () => {
+  if(!randomRGB){
+    randomRGB = true;
+}else{
+  randomRGB = false;
+}})
 
 reset.addEventListener("click", clearGrid);
 
