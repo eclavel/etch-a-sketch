@@ -4,11 +4,25 @@ const randomColor = document.querySelector("button.random");
 let currentColor = "black";
 let randomRGB = false;
 
+function removeOldGrid() {
+  const divs = document.querySelectorAll(".grid-container div");
+  divs.forEach((div) => div.remove());
+}
+
+function getRandomColor(){
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 function createGrid(size) {
   const grid = document.querySelector(".grid-container");
-  //remove previous grid
+  // remove previous grid
   removeOldGrid();
-  //create new grid size
+  // create new grid size
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
   for (let i = 0; i < size; i++) {
@@ -35,24 +49,10 @@ function clearGrid() {
   });
 }
 
-function removeOldGrid() {
-  const divs = document.querySelectorAll(".grid-container div");
-  divs.forEach((div) => div.remove());
-}
-
-function getRandomColor(){
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 const slider = document.querySelector(".input .slider input");
 const output = document.querySelector(".input .slider output");
 slider.addEventListener("input", (e) => {
-  output.innerHTML = e.target.value + "x" + e.target.value;
+  output.innerHTML = `${e.target.value  }x${  e.target.value}`;
   createGrid(e.target.value);
 });
 
